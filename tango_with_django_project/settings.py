@@ -13,22 +13,26 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 MEDIA_DIR = os.path.join(BASE_DIR, 'media')
+STATICFILES_DIRS = [STATIC_DIR,]
+MEDIA_ROOT = MEDIA_DIR
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '#1xv4u)e8h71anau9(0+32916-sxmq$p-lqwntin%)_qbi7_#x'
+SECRET_KEY = 'lkc%0^sfh5@1%tyrvt$o-h5v&jspusujyfir3&rz8$wli($q=g'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost','100.75.170.18','127.0.0.1']
 
 
 # Application definition
@@ -40,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rango',
+    'rango'
 ]
 
 MIDDLEWARE = [
@@ -58,7 +62,7 @@ ROOT_URLCONF = 'tango_with_django_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATE_DIR],
+        'DIRS': [TEMPLATE_DIR,STATIC_DIR,MEDIA_DIR,],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -66,7 +70,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.media'
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -122,7 +126,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [STATIC_DIR, ]
-MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
+STATIC_URL = '/static/'
+
